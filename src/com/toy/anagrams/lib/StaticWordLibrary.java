@@ -30,6 +30,7 @@
 /* Anagram Game Application */
 
 package com.toy.anagrams.lib;
+import java.util.*;
 
 /**
  * Implementation of the logic for the Anagram Game application.
@@ -84,7 +85,7 @@ final class StaticWordLibrary extends WordLibrary {
         "traditional",
         "ごうひろみ"};
 
-    private static final String[] SCRAMBLED_WORD_LIST = {
+    /* private static final String[] SCRAMBLED_WORD_LIST = {
         "batsartcoin",
         "maibuguos",
         "ratimhteci",
@@ -131,7 +132,10 @@ final class StaticWordLibrary extends WordLibrary {
         "nuisngde",
         "rtdatioialn",
         "ごみひろう"
-    };
+    }; */
+    
+    private static final String[] SCRAMBLED_WORD_LIST = new String[WORD_LIST.length + 1];
+	
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
@@ -156,6 +160,12 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
+    	for(int i=0; i<WORD_LIST.length; i++) {
+    		char[] Char = WORD_LIST[i].toCharArray();
+    		Arrays.sort(Char);
+    		String sortWord = new String(Char);
+    	    SCRAMBLED_WORD_LIST[i] = sortWord;
+    	}
         return SCRAMBLED_WORD_LIST[idx];
     }
 
